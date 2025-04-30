@@ -56,6 +56,7 @@ int main( int inArgCount, char **inArgs ) {
 
 
 #include "minorGems/util/SettingsManager.h"
+#include "minorGems/util/CustomSettingsManager.h"
 #include "minorGems/util/TranslationManager.h"
 #include "minorGems/util/stringUtils.h"
 #include "minorGems/util/SimpleVector.h"
@@ -1681,15 +1682,23 @@ int mainFunction( int inNumArgs, char **inArgs ) {
         Log::INFO_LEVEL,
         "Target game image size:  %dx%d\n",
         gameWidth, gameHeight );
+    
+    CustomSettingsManager& settings = CustomSettingsManager::getInstance();
 
 
     // read screen size from settings
     char widthFound = false;
-    int readWidth = SettingsManager::getIntSetting( "screenWidth", 
-                                                    &widthFound );
+    int readWidth = settings.getSetting<int>(CustomSettingsManager::SettingFile::Game,
+        "Screen",
+        "screenWidth",
+        0,
+        &widthFound);
     char heightFound = false;
-    int readHeight = SettingsManager::getIntSetting( "screenHeight", 
-                                                    &heightFound );
+    int readHeight = settings.getSetting<int>(CustomSettingsManager::SettingFile::Game,
+        "Screen",
+        "screenHeight",
+        0,
+        &heightFound);
     
     if( widthFound && heightFound ) {
         // override hard-coded defaults
@@ -1722,8 +1731,11 @@ int mainFunction( int inNumArgs, char **inArgs ) {
     
 
     char fullscreenFound = false;
-    int readFullscreen = SettingsManager::getIntSetting( "fullscreen", 
-                                                         &fullscreenFound );
+    int readFullscreen = settings.getSetting<int>(CustomSettingsManager::SettingFile::Game,
+        "Screen",
+        "fullscreen", 
+        0,
+        &fullscreenFound);
     
     char fullscreen = true;
     
@@ -1741,8 +1753,11 @@ int mainFunction( int inNumArgs, char **inArgs ) {
 
     char useLargestWindowFound = false;
     int readUseLargestWindow = 
-        SettingsManager::getIntSetting( "useLargestWindow", 
-                                        &useLargestWindowFound );
+        settings.getSetting<int>(CustomSettingsManager::SettingFile::Game,
+            "Screen",
+            "useLargestWindow",
+            0,
+            &useLargestWindowFound );
     
     char useLargestWindow = true;
     
@@ -1885,8 +1900,11 @@ int mainFunction( int inNumArgs, char **inArgs ) {
 
 
     char frameRateFound = false;
-    int readFrameRate = SettingsManager::getIntSetting( "halfFrameRate", 
-                                                         &frameRateFound );
+    int readFrameRate = settings.getSetting<int>(CustomSettingsManager::SettingFile::Game,
+        "Frame",
+        "halfFrameRate", 
+        0,
+        &frameRateFound );
 
     if( frameRateFound && readFrameRate >= 1 ) {
         // cut frame rate in half N times

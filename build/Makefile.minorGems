@@ -282,6 +282,10 @@ SETTINGS_MANAGER_H = ${ROOT_PATH}/minorGems/util/SettingsManager.h
 SETTINGS_MANAGER_CPP = ${ROOT_PATH}/minorGems/util/SettingsManager.cpp
 SETTINGS_MANAGER_O = ${ROOT_PATH}/minorGems/util/SettingsManager.o
 
+CUSTOM_SETTINGS_MANAGER_CPP = ${ROOT_PATH}/minorGems/util/CustomSettingsManager.cpp
+CUSTOM_SETTINGS_MANAGER_H = ${ROOT_PATH}/minorGems/util/CustomSettingsManager.h
+CUSTOM_SETTINGS_MANAGER_O = ${ROOT_PATH}/minorGems/util/CustomSettingsManager.o
+
 TRANSLATION_MANAGER_H = ${ROOT_PATH}/minorGems/util/TranslationManager.h
 TRANSLATION_MANAGER_CPP = ${ROOT_PATH}/minorGems/util/TranslationManager.cpp
 TRANSLATION_MANAGER_O = ${ROOT_PATH}/minorGems/util/TranslationManager.o
